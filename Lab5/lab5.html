@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    <link rel="stylesheet" href="../css/lab5.css">
+    <script src="../Javascript/lab5.js" ></script>
+</head>
+<body>
+   <pre>
+ <p> <small> 1. Define a function max() that takes two numbers as arguments and returns the largest of them. Use the if-then else construct available in Javascript.</p>
+    
+ <code>
+    "use strict"
+    function findmax(a,b){
+    if (a>b){
+    return a;
+    }else{
+        return b;
+    }
+    }
+</code>
+</pre>
+   <pre>
+ <p> 2. Define a function maxOfThree() that takes three numbers as arguments and returns the largest of them.</p>
+<code>
+ function comparator(a,b){
+    return a-b;
+}
+
+function findmaxofThree(...args){
+    return args.sort(comparator).reverse()[0];
+}
+</code>
+</pre>
+
+
+<pre> 
+    <p> 3. Write a function isVowel() that takes a character (i.e. a string of length 1) and returns true if it is a vowel, false 
+        otherwise.</p>
+   <code>
+    function isVowel(c){
+        if(c=="a"|| c=="u" || c == "i" || c=="o" || c=="e"){
+        return true;
+    }else{
+        return false;
+    }}
+   </code> 
+</pre>
+
+<pre>
+    <p>4. Define a function sum() and a function multiply() that sums and multiplies (respectively) all the numbers in an 
+        input array of numbers. For example, sum([1,2,3,4]) should return 10, and multiply([1,2,3,4]) should return 24.
+        Note/Hint: Do these using Imperative programming approach (i.e. for…loop or while…loop)
+        </p>
+    <code>
+        function sumOf(...arr) {
+            let result = 0;
+            for (let num of arr) {
+              result += num;
+            }
+            return result;
+          }
+    </code>
+    <code>
+        function multiplyOf(...arr) {
+            let result = 1;
+            for (let num of arr) {
+              result *= num;
+            }
+            return result;
+          }
+    </code>
+</pre>
+<pre> 
+    <p>5. Define a function reverse() that computes the reversal of a string. For example, reverse("jag testar") should 
+        return the string "ratset gaj".</p>
+    <code>
+        function reverseString(str){
+            let rev = "";
+            for(let i=str.length-1; i>=0; i--){
+             rev += str[i];
+            }
+            return rev;
+             
+         }
+    </code>
+</pre>
+<pre>
+    <p>6. Write a function findLongestWord() that takes an array of words and returns the length of the longest one.</p>
+    <code>
+        function  findLongestWord(...args){
+            return args.sort((a,b)=>a.length-b.length).reverse()[0].length;
+           }
+    </code>
+</pre>
+<pre> 
+    <p>7. Write a function filterLongWords() that takes an array of words and an integer i and returns a new array 
+        containing only those words that were longer than i characters.</p>
+    <code>
+        function  filterLongWords(arr,i){
+            return arr.filter(x=>x.length>i);
+        }
+    </code>
+</pre>
+<pre>
+    <p>8. Write a function named, computeSumOfSquares, that takes as input, an array of numbers and calculates and 
+        returns the sum of the squares of each number in the input array. E.g. computeSumOfSquares([1,2,3]) should be 
+        computed as 12 + 22 +32 = 14. Note: Write your Javascript code without using Imperative programming. i.e. Do 
+        NOT use any explicit looping construct; instead use functional programming style/approach.</p>
+    <code> 
+        function computeSumOfSquares(...args){
+            return args.reduce((a,b)=>a+b*b,0);
+        }
+    </code>
+</pre>
+<pre>
+    <p>9. Write a function named, printOddNumbersOnly, that takes as input, an array of integral numbers and it finds 
+        and prints only the numbers which are odd</p>
+    <code>function printOddNumbersOnly(...args){
+        args.filter(x=>x%2!=0).forEach(y=>console.log(y));
+    
+    }</code>
+</pre>
+<pre> 
+    <P>10. Write a function named, computeSumOfSquaresOfEvensOnly, that takes as input, an array of integral numbers 
+     and calculates and returns the sum of the squares of only the even numbers in the input array. E.g. 
+     computeSumOfSquaresOfEvensOnly ([1,2,3,4,5]) should be computed as 22 +42 = 20.</P>
+    <code>
+        function computeSumOfSquaresOfEvensOnly(...args){
+            return args.filter(x=>x%2==0).reduce((a,b)=>a+b*b,0);
+        }
+    </code>
+</pre>
+<pre>
+    <p>11. Using the Array.reduce(…) function, re-implement your functions, sum(…) and multiply(…) (defined in Problem 4 
+        above) without using Imperative programming. i.e. Do NOT use any explicit looping construct; instead use 
+        functional programming style/approach. </p>
+    <code>
+        function sum(...args){
+            return args.reduce((a,b)=> a+b,0);
+         }
+         </code>
+    
+    <code>
+            function multiply(...args){
+                return args.reduce((a,b)=> a*b,1);
+              }
+         </code>
+</pre>
+<pre>
+    <p>12. Write a function named printFibo, that takes as input, a given length, n, and any two starting numbers a and b, 
+        and it prints-out the Fibonacci sequence, e.g. (0, 1, 1, 2, 3, 5, 8, 13, 21, 34,…) of the given length, beginning with 
+        a and b. (e.g. printFibo(n=1, a=0, b=1), prints-out: "0", as output; printFibo(n=2, a=0, b=1), prints-out: "0, 1", as 
+        output; printFibo(n=3, a=0, b=1), prints-out: "0, 1, 1", as output; printFibo(n=6, a=0, b=1), prints-out: "0, 1, 1, 2, 
+        3, 5", as output; and printFibo(n=10, a=0, b=1), prints-out: "0, 1, 1, 2, 3, 5, 8, 13, 21, 34", as output).</p>
+    <code>
+        function printFibo(n, a, b) {
+            let fib = [a, b];
+            for (let i = 2; i < n; i++) {
+              fib[i] = fib[i-1] + fib[i - 2];
+            }
+            return fib.join(", ");
+          }
+    </code>
+</pre>
+</body>
+</html>
