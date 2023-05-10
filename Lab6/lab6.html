@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab6</title>
+    <link rel="stylesheet" href="../css/lab6.css">
+</head>
+<body>
+    <pre>
+        <h3>Question 1</h3>
+        <code>
+         
+              var a = 5;
+              var b = 10;
+              var c = function (a, b, c) {
+                 document.write(x); 
+                document.write(a);
+                var f = function (a, b, c) {
+                  b = a;
+                  document.write(b);
+                  b = c;
+                  var x = 5;
+                };
+                f(a, b, c);
+                document.write(b);
+                var x = 10;
+              };
+              c(8, 9, 10);
+              document.write(b);
+              
+        </code>
+        <p>Output: undefined 8,8,9,10</p>
+        <table>
+            <h3> Global EC</h3>
+           <tr>
+               <th> Creation Phase</th>
+               <th> Excution Phase</th>
+           </tr>
+           <tr>
+               <td> x:1</td>
+               <td> x:1</td>
+            </tr>
+           <tr>
+               <td> a:undefined</td>  
+               <td> a:5</td>
+            </tr>
+               <td> b:undefined</td>
+               <td> b:10</td>
+            <tr>
+               <td> c:undefined</td>
+               <td> c:fn</td>
+            </tr>
+              <td> outer: null</td>
+               
+           </tr>
+        </table>
+
+        <table>
+            <h3> Function c</h3>
+           <tr>
+               <th> Creation Phase</th>
+               <th> Excution Phase</th>
+           </tr>
+           <tr>
+               <td> f:undefined</td>
+               <td> f:fn</td>
+            </tr>
+           <tr>
+               <td> x:undefined</td>  
+               <td> x:10</td>
+            </tr>
+            <tr>
+               <td> arguments(0:8,1:9,2:10,length 3)</td>
+               <td> arguments(0:8,1:9,2:10,length 3)</td>
+             </tr>
+            <tr>
+            <td> a=8,b=9,c=10</td>
+            <td> a=8,b=9,c=10</td>
+            </tr>
+            <tr>
+               <td> Outer:global</td>
+               <td> Outer:global</td>
+            </tr>
+               
+        </table>
+
+        <table>
+          <tr>
+               <th> Creation Phase</th>
+               <th> Excution Phase</th>
+           </tr>
+           <tr>
+               <td> x:undefined</td>
+               <td> x:5</td>
+            </tr>
+           <tr>
+               <td> arguments(0:8,1:9,2:10,length 3)</td>
+               <td> arguments(0:8,1:9,2:10,length 3)</td>
+            </tr>
+            <tr>
+                <td> a=8,b=9,c=10</td>
+                <td> a=8,b=9,c=10</td>
+            </tr>
+            <tr>
+            <td></td>
+            <td> b=10 </td>
+            </tr>
+            <tr>
+               <td> Outer:c</td>
+               <td> Outer:c</td>
+            </tr>
+               
+        </table>        
+          
+    </pre>
+
+    <pre>
+        <h3>Question 2</h3>
+        <code>
+            var x = 9;
+        function myFunction() {
+          return x * x;
+        }
+        document.write(myFunction());
+        x = 5;
+        document.write(myFunction());
+        </code>
+        <p>Output: 81,25</p>
+        <table>
+            <h3> Global EC</h3>
+           <tr>
+               <th> Creation Phase</th>
+               <th> Excution Phase</th>
+           </tr>
+           <tr>
+               <td> x:undefined</td>
+               <td> x:5</td>
+            </tr>
+           <tr>
+               <td> myFunction</td>  
+               <td> myFunction:fn</td>
+            </tr>
+               <td> outer:null</td>
+               <td> outer:null</td>
+         </tr>
+        </table>
+        <table>
+            <h3> Function myFunction</h3>
+           <tr>
+               <th> Creation Phase</th>
+               <th> Excution Phase</th>
+           </tr>
+            <tr>
+               <td> arguments(length 0)</td>
+               <td> arguments(length 0)</td>
+               </tr>
+            <tr>
+               <td> Outer:global</td>
+               <td> Outer:global</td>
+            </tr>
+               
+           </table>
+      </pre>
+   
+      <pre>
+        <h3>Question 3</h3>
+        <code>
+            var foo = 1;
+            function bar() {
+              if (!foo) {
+                var foo = 10;
+              }
+              alert(foo);
+            }
+            bar();
+       </code>
+        <p>Output: 10</p>
+        <table>
+            <h3> Global EC</h3>
+           <tr>
+               <th> Creation Phase</th>
+               <th> Excution Phase</th>
+           </tr>
+           <tr>
+               <td> foo:undefined</td>
+               <td> foo:1</td>
+            </tr>
+               
+           <tr>
+               <td> bar:fn</td>  
+               <td> bar:fn</td>
+            </tr>
+            <tr>
+               <td> outer:null</td>
+               <td> outer:null </td>
+            </tr>
+        </table>
+        <table>
+            <h3> Function bar</h3>
+           <tr>
+               <th> Creation Phase</th>
+               <th> Excution Phase</th>
+           </tr>
+            <tr>
+               <td> foo:undefined</td>
+               <td> foo:10</td>
+            </tr>
+            <tr>
+                <td> argument:(length 0)</td>
+                <td> argument:(length 0)</td>
+            </tr>
+            <tr>
+               <td> Outer:global</td>
+               <td> Outer:global</td>
+            </tr>
+               
+           
+        </table>
+      </pre>
+</body>
+</html>

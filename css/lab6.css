@@ -1,0 +1,38 @@
+table{
+    width: 400px;
+
+    
+}
+th{
+    text-align: left;
+}
+table,th,td{
+    border:1px solid #000;
+    border-collapse: collapse;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+code {
+    background-color: rgb(215, 225, 218);
+    border: 1px solid #999;
+    display: block;
+    padding: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    width: 100%;
+    font-family: monospace;
+    font-size: medium;
+}
+p{
+    background-color: rgb(215, 225, 218);
+    border: 1px solid #999;
+    display: block;
+    padding: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    height: 30px;
+    width: 100%;
+    font-family: monospace;
+    font-size: medium;
+    
+}
