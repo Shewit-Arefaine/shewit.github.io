@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    font-family:'poppins',sans-serif;
+    background-color:darkslategrey;
+   
+}
+
+.about{
+    position:relative;
+    width: 100%;
+    height: 100vh;
+    
+    
+}
+
+ .image-container{
+    display: grid;
+    grid-template-columns: 1fr 2.0fr;
+    grid-gap: 10px;
+
+ }
+
+ol.x { 
+    display: flex;
+    flex-direction: column-reverse;
+    color: lightblue;
+}
+h2 {
+    color: lightblue;
+}
+h4{
+    color:lightblue;
+}
