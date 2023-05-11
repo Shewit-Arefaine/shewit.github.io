@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab7</title>
+    <link rel="stylesheet" href="../css/lab7.css">
+</head>
+<body>
+    <pre>
+        <p>Question 1: Fix using wrapper, bind, call, apply.</p>
+        <img src="../images/lab7.png" width="600" height="500" />
+         <h4> Answer </h4>
+        <code>
+             function askPassword(ok, fail){
+               let password = prompt("Password?",'');
+                if (password == "rockstar") ok();
+                else fail();
+                }
+                let user = {
+               name: 'John',
+                loginOk(){
+                alert('${this.name} logged in');
+                },
+                loginFail(){
+                alert('${this.name} failed to log in');
+                },
+                };
+                askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
+        </code>
+    </pre>
+
+    <pre>
+        <p> Question 2: Fix the code below using bind </p>
+          <code>
+            let group = {
+                title: "Our Group",
+                students: ["John", "Pete", "Alice"],
+                showList: function() {
+                this.students.forEach(function(student) {
+                console.log(this.title + ": " + student);
+                });
+                }
+                };
+                group.showList();
+        </code>
+        <h4> Answer </h4>
+        <code> 
+            let group = {
+                title: "Our Group",
+                students: ["John", "Pete", "Alice"],
+                showList: function () { 
+                this.students.forEach(function (student) {
+                console.log(this.title + ": " + student).bind(this);
+                  });
+                  }
+                  
+                  };
+                
+                  group.showList();
+        </code>
+    </pre>
+</body>
+</html>
