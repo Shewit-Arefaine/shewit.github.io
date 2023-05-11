@@ -11,7 +11,7 @@
     <pre>
         <p>Question 1: Fix using wrapper, bind, call, apply.</p>
         <img src="../images/lab7.png" width="600" height="500" />
-         <h4> Answer </h4>
+         <h4>Answer</h4>
         <code>
              function askPassword(ok, fail){
                let password = prompt("Password?",'');
@@ -19,13 +19,13 @@
                 else fail();
                 }
                 let user = {
-               name: 'John',
-                loginOk(){
-                alert('${this.name} logged in');
-                },
-                loginFail(){
-                alert('${this.name} failed to log in');
-                },
+                    name: 'John',
+                    loginOk(){
+                        alert('${this.name} logged in');
+                        },
+                    loginFail(){
+                        alert('${this.name} failed to log in');
+                        },
                 };
                 askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
         </code>
