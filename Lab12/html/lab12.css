@@ -1,0 +1,10 @@
+*{
+  font-family: 'Courier New', Courier, monospace;  
+  font-size: medium;
+  background-color: aquamarine;
+}
+  p{
+     text-align: left;
+     background-color: rgb(171, 180, 171);
+    
+    }

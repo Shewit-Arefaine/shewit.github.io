@@ -102,5 +102,31 @@ function printFibo(n, a, b) {
   }
   console.log(printFibo(2, 0, 1));
 
+  function isVowel(chr) {
+    if (chr.length != 1) {
+        alert("give me a charachter");
+        return;
+    }
+    if ("AEIOUaeiou".includes(chr)) return true;
+    else false;
+}
+
+function Vowel(args){
+  let y=['a','i','o','u','a','A','E','I','O','U'];
+  let x = "aieou";
+  if("aieou".includes(args.toLowerCase())){
+    return true;
+  }else{
+    return false;
+  }
+}
+console.log(Vowel('c'));
+
+function findSecondBiggest1(...args){
+  return args.sort((a,b)=>a-b).reverse()[1];
+  
+}
+console.log(findSecondBiggest1(1,2,3,4,6,8));
                         
-      
+
+

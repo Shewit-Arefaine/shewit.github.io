@@ -1,0 +1,16 @@
+*{
+    font-size: medium;
+}
+code {
+    background-color: rgb(171, 180, 171);
+    border: 1px solid #999;
+    display: block;
+    padding: 10px;
+    margin-left: 100px;
+    width: 50%;
+    font-family: monospace;
+    font-size: medium;
+    }
+    p{
+        text-align: left;
+    }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab 8</title>
+    <link rel="stylesheet" href="../css/lab8.css">
+    <script src="../Javascript/lab8.js" ></script>
+</head>
+<body>
+    <pre>
+        <p> Question 1</p>
+        <code> 
+            let Student={
+                firstName:String,
+                lastName:String,
+                grades:[],
+            
+                 inputGrade: function(newGrade){
+                   this.grades.push(newGrade);
+                    },
+                 computeAverageGrade: function(){
+                    return this.grades.reduce((x,y)=>x+y,0)/this.grades.length;
+            
+                 }
+            
+             };
+                let allstudents =[];
+                let s1=Object.create(Student);
+                s1.firstName = "Shewit";
+                s1.lastName="Arefaine";
+                s1.grades=[97,98,96];
+
+
+                let s2=Object.create(Student);
+                s2.firstName ="Eldana";
+                s2.lastName="Tsekawe";
+                s2.grades=[97,91,90];
+
+                console.log(s1.computeAverageGrade());
+                console.log(s2.computeAverageGrade());
+        </code>
+    </pre>
+    <pre>
+        <p> Question 2</p>
+        <code> 
+            function Student1(fname,lname){
+                this.firstName=fname;
+                this.lastName=lname;
+                grade=[];
+                this.inputGrade=function (newGrade){
+                    this.grade.push(newGrade);
+                }
+                this.computeAverageGrade= function(){
+                    return this.grade.reduce((x,y)=>x+y,0)/this.grade.length;
+                 }
+             } 
+             let ss1 = new Student1("Shewwit", "Tsekawe");
+             ss1.grade = [10];
+             ss1.grade = [10];
+             ss1.grade = [10];
+             console.log(ss1.computeAverageGrade());
+        </code>
+    </pre>
+    <pre>
+        <p> Question 3</p>
+        <code> 
+            Array.prototype.sort = function() {
+                this.sort(function (a, b) { return a - b });
+            }
+        </code>
+    </pre>
+    
+</body>
+</html>
