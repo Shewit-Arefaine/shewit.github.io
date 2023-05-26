@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
-const securityRoutes = require("./routes/securityRoutes");
+const loginRoutes = require("./routes/loginRoutes");
 const shoppingCartRoutes = require("./routes/shoppingCartRoutes");
 const User = require("./models/User");
 
@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use("/login", securityRoutes);
+app.use("/login", loginRoutes);
 
 app.use((req, res, next) => {
   const auth = req.headers.authorization;
