@@ -1,4 +1,32 @@
+function addPatient(patientID, fName, mInitials, lName, dob, department, isOutPatient) {
+    let newRow = document.createElement("tr");
+    let agediff = new Date(Date.now() - new Date(dob));
+    newRow.classList.add((agediff.getUTCFullYear() - 1970) > 65 ? "ElderPatient" : "notElder");
+    newRow.classList.add(isOutPatient ? "OutPatients" : "InPatients");
 
+    newRow.innerHTML = `<td>${patientID}</td>
+                        <td>${fName}</td>
+                        <td>${mInitials}</td>
+                        <td>${lName}</td>
+                        <td>${dob}</td>
+                        <td>${department}</td>
+                        <td>${isOutPatient ? "Yes" : "No"}</td>`;
+
+    document.getElementById("tbodyPatientsList").appendChild(newRow);
+}
+
+// Predefined patients
+const patients = [
+    { patientID: "EP-001-000001", fName: "John", mInitials: "A", lName: "Elder", dob: "1950-01-01", department: "Cardiology", isOutPatient: false },
+    { patientID: "EP-002-000002", fName: "Jane", mInitials: "B", lName: "Doe", dob: "1985-01-01", department: "General", isOutPatient: true },
+    { patientID: "EP-003-000003", fName: "Jim", mInitials: "C", lName: "Young", dob: "1995-01-01", department: "Pediatrics", isOutPatient: false },
+    { patientID: "EP-004-000004", fName: "Jill", mInitials: "D", lName: "Healthy", dob: "1975-01-01", department: "Orthopedics", isOutPatient: true }
+];
+
+// Add predefined patients to the list
+patients.forEach(patient => {
+    addPatient(patient.patientID, patient.fName, patient.mInitials, patient.lName, patient.dob, patient.department, patient.isOutPatient);
+});
 document.getElementById("btnRegisterPatient").addEventListener("click",function(event){
     event.preventDefault();
 let patientIDNumber = document.getElementById("patientIdNumber");
