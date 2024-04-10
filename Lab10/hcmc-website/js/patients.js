@@ -157,5 +157,71 @@ document.getElementById("btnRegisterPatient").addEventListener("click", function
 
 // Similar refactoring for other event listeners...
 
+function addPatient(patientID, fName, mInitials, lName, dob, department, isOutPatient) {
+    // Check if the target tbody exists
+    const tbodyPatientsList = document.getElementById("tbodyPatientsList");
+    if (!tbodyPatientsList) {
+        console.error("Error: 'tbodyPatientsList' does not exist.");
+        return; // Exit the function to prevent further execution
+    }
 
+    // Validate input values (basic example)
+    if (!patientID || !fName || !lName || !dob) {
+        console.error("Error: Missing required patient information.");
+        return;
+    }
+
+    try {
+        let newRow = document.createElement("tr");
+        let agediff = new Date(Date.now() - new Date(dob));
+        
+        // Additional validation for date could be performed here
+        
+        newRow.classList.add((agediff.getUTCFullYear() - 1970) > 65 ? "ElderPatient" : "notElder");
+        newRow.classList.add(isOutPatient ? "OutPatients" : "InPatients");
+        
+        newRow.innerHTML = `<td>${patientID}</td>
+                            <td>${fName}</td>
+                            <td>${mInitials}</td>
+                            <td>${lName}</td>
+                            <td>${dob}</td>
+                            <td>${department}</td>
+                            <td>${isOutPatient ? "Yes" : "No"}</td>`;
+        
+        tbodyPatientsList.appendChild(newRow);
+    } catch (error) {
+        // Log or handle errors
+        console.error("An error occurred while adding a patient: ", error.message);
+    }
+}
+
+document.getElementById("btnRegisterPatient").addEventListener("click", function(event) {
+    event.preventDefault();
+
+    // Assuming element existence validation is done within addPatient or separately before invoking it
+    let patientIDNumber = document.getElementById("patientIdNumber");
+    let firstName = document.getElementById("firstName");
+    let middleInitials = document.getElementById("middleInitials");
+    let lastName = document.getElementById("lastName");
+    let dateOfBirth = document.getElementById("dateOfBirth");
+    let ddlDepartment= document.getElementById("ddlDepartment");
+    let radioIsOutPatientYes = document.getElementById("radioIsOutPatientYes");
+
+    // Example of an inline validation before function call
+    if (!patientIDNumber || !firstName || !lastName || !dateOfBirth) {
+        console.error("Error: Required fields must be filled.");
+        return;
+    }
+
+    // Call addPatient with validated inputs
+    addPatient(
+        patientIDNumber.value,
+        firstName.value,
+        middleInitials.value,
+        lastName.value,
+        dateOfBirth.value,
+        ddlDepartment.value,
+        radioIsOutPatientYes.checked
+    );
+});
 
