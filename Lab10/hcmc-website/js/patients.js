@@ -78,4 +78,56 @@ document.getElementById("chkShowOutPatients").addEventListener("click",function(
 });
 
 
+self contained // A function that doesn't interact with the DOM directly but performs some logic
+function createPatientRowData(patientID, firstName, middleInitials, lastName, dob, department, isOutpatient) {
+    const ageDiff = new Date(Date.now() - new Date(dob));
+    const isElder = (ageDiff.getUTCFullYear() - 1970) > 65;
+    const patientClass = isElder ? "ElderPatient" : "notElder";
+    const outpatientClass = isOutpatient ? "OutPatients" : "InPatients";
+
+    return {
+        patientID,
+        firstName,
+        middleInitials,
+        lastName,
+        dob,
+        department,
+        isOutpatient: isOutpatient ? "Yes" : "No",
+        classes: [patientClass, outpatientClass]
+    };
+}
+
+// This function depends on the DOM to work, so we pass the DOM elements it needs
+function addPatientRowToTable(tableBody, rowData) {
+    const newRow = document.createElement("tr");
+    newRow.classList.add(...rowData.classes);
+    newRow.innerHTML = `<td>${rowData.patientID}</td>
+                        <td>${rowData.firstName}</td>
+                        <td>${rowData.middleInitials}</td>
+                        <td>${rowData.lastName}</td>
+                        <td>${rowData.dob}</td>
+                        <td>${rowData.department}</td>
+                        <td>${rowData.isOutpatient}</td>`;
+
+    tableBody.appendChild(newRow);
+}
+
+// DOM-dependent initialization
+document.getElementById("btnRegisterPatient").addEventListener("click", function(event) {
+    event.preventDefault();
+
+    // Here you would get the values from the DOM
+    const patientIDNumber = document.getElementById("patientIdNumber").value;
+    // Repeat for other variables...
+
+    // Use the logic function
+    const rowData = createPatientRowData(patientIDNumber, /* other parameters */);
+
+    // Use the DOM manipulation function
+    addPatientRowToTable(document.getElementById("tbodyPatientsList"), rowData);
+});
+
+// Similar refactoring for other event listeners...
+
+
 
