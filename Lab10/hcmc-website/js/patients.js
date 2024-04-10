@@ -225,3 +225,101 @@ document.getElementById("btnRegisterPatient").addEventListener("click", function
     );
 });
 
+function addPatient(patientID, fName, mInitials, lName, dob, department, isOutPatient) {
+    const tbodyPatientsList = document.getElementById("tbodyPatientsList");
+    if (!tbodyPatientsList) {
+        console.error("Error: tbodyPatientsList element not found.");
+        return;
+    }
+
+    if (isNaN(new Date(dob).getTime())) {
+        console.error("Error: Invalid date of birth provided for patient", patientID);
+        return;
+    }
+
+    let newRow = document.createElement("tr");
+    let agediff = new Date(Date.now() - new Date(dob));
+    newRow.classList.add((agediff.getUTCFullYear() - 1970) > 65 ? "ElderPatient" : "notElder");
+    newRow.classList.add(isOutPatient ? "OutPatients" : "InPatients");
+
+    newRow.innerHTML = `<td>${patientID}</td>
+                        <td>${fName}</td>
+                        <td>${mInitials}</td>
+                        <td>${lName}</td>
+                        <td>${dob}</td>
+                        <td>${department}</td>
+                        <td>${isOutPatient ? "Yes" : "No"}</td>`;
+
+    tbodyPatientsList.appendChild(newRow);
+}
+
+const patients = [
+    { patientID: "EP-001-000001", fName: "John", mInitials: "A", lName: "Elder", dob: "1950-01-01", department: "Cardiology", isOutPatient: false },
+    { patientID: "EP-002-000002", fName: "Jane", mInitials: "B", lName: "Doe", dob: "1985-01-01", department: "General", isOutPatient: true },
+    { patientID: "EP-003-000003", fName: "Jim", mInitials: "C", lName: "Young", dob: "1995-01-01", department: "Pediatrics", isOutPatient: false },
+    { patientID: "EP-004-000004", fName: "Jill", mInitials: "D", lName: "Healthy", dob: "1975-01-01", department: "Orthopedics", isOutPatient: true }
+];
+
+patients.forEach(patient => {
+    addPatient(patient.patientID, patient.fName, patient.mInitials, patient.lName, patient.dob, patient.department, patient.isOutPatient);
+});
+
+document.getElementById("btnRegisterPatient").addEventListener("click", function(event){
+    event.preventDefault();
+    const patientIDNumber = document.getElementById("patientIdNumber");
+    const firstName = document.getElementById("firstName");
+    const middleIntials = document.getElementById("middleInitials");
+    const lastName = document.getElementById("lastName");
+    const dateOfBirth = document.getElementById("dateOfBirth");
+    const ddlDepartment = document.getElementById("ddlDepartment");
+    const radioIsOutPatientYes = document.getElementById("radioIsOutPatientYes");
+
+    if (!patientIDNumber || !firstName || !lastName || !dateOfBirth || !ddlDepartment) {
+        console.error("Error: One or more input elements are missing.");
+        return;
+    }
+
+    let newRow = document.createElement("tr");
+    let agediff = new Date(Date.now() - new Date(dateOfBirth.value));
+    newRow.classList.add((agediff.getUTCFullYear() - 1970) > 65 ? "ElderPatient" : "notElder");
+    newRow.classList.add(radioIsOutPatientYes.checked ? "OutPatients" : "InPatients");
+
+    newRow.innerHTML = `<td>${patientIDNumber.value}</td>
+                        <td>${firstName.value}</td>
+                        <td>${middleIntials.value}</td>
+                        <td>${lastName.value}</td>
+                        <td>${dateOfBirth.value}</td>
+                        <td>${ddlDepartment.value}</td>
+                        <td>${radioIsOutPatientYes.checked ? "Yes" : "No"}</td>`;
+
+    document.getElementById("tbodyPatientsList").appendChild(newRow);
+});
+
+document.getElementById("chkElderlyPatients").addEventListener("click", function(){
+    const elderlyPatientChecked = document.getElementById("chkElderlyPatients").checked;
+    const notElder = document.getElementsByClassName("notElder");
+
+    if (!notElder) {
+        console.error("Error: No patients to filter.");
+        return;
+    }
+
+    for (const row of notElder) {
+        if(elderlyPatientChecked){
+            row.classList.add("d-none");
+        } else {
+            row.classList.remove("d-none");
+        }
+    }
+});
+
+document.getElementById("chkShowOutPatients").addEventListener("click", function(){
+    const checkedOutPatients = document.getElementById("chkShowOutPatients").checked;
+    const InPatients = document.getElementsByClassName("InPatients");
+
+    if (!InPatients) {
+        console.error("Error: No inpatients
+
+
+
+
